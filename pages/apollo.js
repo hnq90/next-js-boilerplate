@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { List, Form, Button } from 'antd'
 import { SmileFilled } from '@ant-design/icons'
-import { getRates } from '../src/schema/queries/rates'
+import { getRates } from '~/schema/queries/rates'
 
 const FormItem = Form.Item
 

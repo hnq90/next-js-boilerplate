@@ -1,5 +1,5 @@
 import { types } from 'mobx-state-tree'
-import { TestModel } from '../models/test'
+import { TestModel } from '~/store/models/test'
 
 /**
  * A RootStore model.

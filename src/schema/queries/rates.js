@@ -1,4 +1,4 @@
-import { initializeApollo, gql } from '../../utils/apollo'
+import { initializeApollo, gql } from '~/utils/apollo'
 
 export const EXCHANGE_RATES = gql`
   query GetRates($currency: String!) {

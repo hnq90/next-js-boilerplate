@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Form, Select, InputNumber, Switch, Slider, Button } from 'antd'
 import { SmileFilled } from '@ant-design/icons'
-import DatePicker from '../src/components/widgets/DatePicker'
-import { useStores } from '../src/store'
+import DatePicker from '~/components/widgets/DatePicker'
+import { useStores } from '~/store'
 
 const FormItem = Form.Item
 const Option = Select.Option

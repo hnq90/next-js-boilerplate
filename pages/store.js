@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Form, Switch, Button } from 'antd'
 import { SmileFilled } from '@ant-design/icons'
-import { useStores } from '../src/store'
+import { useStores } from '~/store'
 
 const FormItem = Form.Item
 

@@ -2,7 +2,7 @@ import 'mobx-react-lite/batchingForReactDom'
 import { useStaticRendering } from 'mobx-react-lite'
 import { applySnapshot } from 'mobx-state-tree'
 import { RootStoreModel } from './index'
-import logger from '../../utils/logger'
+import logger from '~/utils/logger'
 
 const isServer = typeof window === 'undefined'
 const isDev = process.env.NODE_ENV !== 'production'
