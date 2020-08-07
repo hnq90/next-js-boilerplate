@@ -1,65 +1,80 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { Form, Select, InputNumber, Switch, Slider, Button } from 'antd'
+import { SmileFilled } from '@ant-design/icons'
+import DatePicker from '../src/components/widgets/DatePicker'
+import { useStores } from '../src/store'
 
-export default function Home() {
+const FormItem = Form.Item
+const Option = Select.Option
+
+const content = {
+  marginTop: '100px',
+}
+
+export default function Index() {
+  const router = useRouter()
+  const { testStore } = useStores()
+
+  const onChange = (checked) => {
+    testStore.toggle(checked)
+  }
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
+    <div style={content}>
+      <div className='text-center mb-5'>
+        <Link href='#'>
+          <a className='logo mr-0'>
+            <SmileFilled size={48} strokeWidth={1} />
           </a>
+        </Link>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+        <p className='mb-0 mt-3 text-disabled'>Welcome to the world !</p>
+      </div>
+      <div>
+        <Form layout='horizontal'>
+          <FormItem label='Input Number' labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
+            <InputNumber
+              size='large'
+              min={1}
+              max={10}
+              style={{ width: 100 }}
+              defaultValue={3}
+              name='inputNumber'
+            />
+          </FormItem>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+          <FormItem label='Switch' labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
+            <Switch defaultChecked={testStore.checked} name='switch' onChange={onChange} />
+          </FormItem>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+          <FormItem label='Slider' labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
+            <Slider defaultValue={70} />
+          </FormItem>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+          <FormItem label='Select' labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
+            <Select size='large' defaultValue='lucy' style={{ width: 192 }} name='select'>
+              <Option value='jack'>jack</Option>
+              <Option value='lucy'>lucy</Option>
+              <Option value='disabled' disabled>
+                disabled
+              </Option>
+            </Select>
+          </FormItem>
+
+          <FormItem label='DatePicker' labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
+            <DatePicker name='startDate' />
+          </FormItem>
+          <FormItem style={{ marginTop: 48 }} wrapperCol={{ span: 8, offset: 8 }}>
+            <Button size='large' type='primary' htmlType='submit' onClick={() => { router.push('store') }}>
+              Next
+            </Button>
+            <Button size='large' style={{ marginLeft: 8 }}>
+              Cancel
+            </Button>
+          </FormItem>
+        </Form>
+      </div>
     </div>
   )
 }
